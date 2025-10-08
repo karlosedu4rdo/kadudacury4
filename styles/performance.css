@@ -1,0 +1,39 @@
+/* Performance optimizations for better INP and LCP */
+
+/* Critical above-the-fold content */
+.hero-image,
+.carousel-container {
+  content-visibility: auto;
+}
+
+/* Optimize button interactions */
+button, 
+[role="button"],
+a {
+  touch-action: manipulation;
+}
+
+/* Optimize carousel */
+.carousel-container {
+  contain: layout;
+}
+
+/* Text rendering */
+body {
+  text-rendering: optimizeSpeed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Form optimization */
+input, 
+textarea, 
+select {
+  touch-action: manipulation;
+}
+
+/* Carousel dots */
+.carousel-dot {
+  touch-action: manipulation;
+}
+
