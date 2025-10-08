@@ -61,7 +61,7 @@ export default function ContatoPage() {
       <ContactSection />
 
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton context="contact" />
     </main>
   )
 }

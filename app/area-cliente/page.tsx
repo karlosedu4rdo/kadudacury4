@@ -52,7 +52,7 @@ export default function AreaClientePage() {
       </section>
 
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton context="clientArea" />
     </main>
   )
 }

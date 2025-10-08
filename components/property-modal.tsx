@@ -4,6 +4,7 @@ import Link from "next/link"
 import { X, MapPin, Bed, Bath, Maximize, Calendar, Heart } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { type Property } from "@/hooks/use-properties"
+import { whatsappMessages } from "@/lib/whatsapp"
 
 interface PropertyModalProps {
   property: Property
@@ -91,13 +92,35 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
           {/* Action Buttons */}
           <div className="flex gap-3">
             <Button asChild className="flex-1 bg-blue-600 hover:bg-blue-700 text-white">
-              <Link href="https://wa.me/5511921773843?text=Olá! Gostaria de agendar uma visita." target="_blank" rel="noopener noreferrer">
+              <Link 
+                href={whatsappMessages.scheduleVisit({
+                  name: property.name,
+                  location: property.location,
+                  price: property.price,
+                  bedrooms: property.bedrooms,
+                  bathrooms: property.bathrooms,
+                  area: property.area
+                })} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
                 <Calendar className="w-4 h-4 mr-2" />
                 Agendar Visita
               </Link>
             </Button>
             <Button asChild className="flex-1 bg-green-600 hover:bg-green-700 text-white">
-              <Link href="https://wa.me/5511921773843?text=Olá! Tenho interesse em saber mais." target="_blank" rel="noopener noreferrer">
+              <Link 
+                href={whatsappMessages.propertyInterest({
+                  name: property.name,
+                  location: property.location,
+                  price: property.price,
+                  bedrooms: property.bedrooms,
+                  bathrooms: property.bathrooms,
+                  area: property.area
+                })} 
+                target="_blank" 
+                rel="noopener noreferrer"
+              >
                 <Heart className="w-4 h-4 mr-2" />
                 Tenho Interesse
               </Link>

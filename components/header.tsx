@@ -4,6 +4,7 @@ import { useState, useCallback } from "react"
 import Link from "next/link"
 import { Phone, Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { whatsappMessages } from "@/lib/whatsapp"
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -57,7 +58,7 @@ export function Header() {
               asChild
               className="bg-orange-500 hover:bg-orange-600 text-white transition-colors duration-150"
             >
-              <Link href="https://wa.me/5511921773843" target="_blank" rel="noopener noreferrer">
+              <Link href={whatsappMessages.simulation()} target="_blank" rel="noopener noreferrer">
                 Fazer Simulação
               </Link>
             </Button>
@@ -109,7 +110,7 @@ export function Header() {
               </Link>
               <div className="px-4 pt-2">
                 <Button asChild className="w-full bg-orange-500 hover:bg-orange-600 text-white">
-                  <Link href="https://wa.me/5511921773843" target="_blank" rel="noopener noreferrer">
+                  <Link href={whatsappMessages.simulation()} target="_blank" rel="noopener noreferrer">
                     Fazer Simulação
                   </Link>
                 </Button>

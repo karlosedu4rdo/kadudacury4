@@ -182,7 +182,7 @@ function ImoveisContent() {
       </section>
 
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton context="properties" />
 
       {selectedProperty && <PropertyModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
     </main>

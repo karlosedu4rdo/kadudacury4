@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import Link from "next/link"
+import { whatsappMessages } from "@/lib/whatsapp"
 
 export function HeroSection() {
   return (
@@ -37,7 +38,7 @@ export function HeroSection() {
               size="lg"
               className="bg-green-500 hover:bg-green-600 text-white font-bold transition-all duration-300 hover:scale-105"
             >
-              <Link href="https://wa.me/5511921773843" target="_blank" rel="noopener noreferrer">
+              <Link href={whatsappMessages.heroOffers()} target="_blank" rel="noopener noreferrer">
                 QUERO APROVEITAR AS OFERTAS
               </Link>
             </Button>

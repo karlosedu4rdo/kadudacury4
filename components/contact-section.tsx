@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { whatsappMessages } from "@/lib/whatsapp"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -15,8 +16,8 @@ export function ContactSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Redireciona para WhatsApp
-    window.open("https://wa.me/5511921773843?text=Olá! Gostaria de entrar em contato.", "_blank")
+    // Redireciona para WhatsApp com dados do formulário
+    window.open(whatsappMessages.contactForm(formData), "_blank")
   }
 
   return (

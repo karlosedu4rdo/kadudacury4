@@ -1,9 +1,39 @@
 import Link from "next/link"
+import { whatsappMessages } from "@/lib/whatsapp"
 
-export function WhatsAppButton() {
+type WhatsAppContext = 
+  | "general" 
+  | "properties" 
+  | "about" 
+  | "contact" 
+  | "referral" 
+  | "clientArea"
+
+interface WhatsAppButtonProps {
+  context?: WhatsAppContext
+}
+
+export function WhatsAppButton({ context = "general" }: WhatsAppButtonProps) {
+  const getMessageUrl = () => {
+    switch (context) {
+      case "properties":
+        return whatsappMessages.propertiesPage()
+      case "about":
+        return whatsappMessages.aboutPage()
+      case "contact":
+        return whatsappMessages.contactPage()
+      case "referral":
+        return whatsappMessages.referralPage()
+      case "clientArea":
+        return whatsappMessages.clientArea()
+      default:
+        return whatsappMessages.general()
+    }
+  }
+
   return (
     <Link
-      href="https://wa.me/5511921773843"
+      href={getMessageUrl()}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-colors duration-200 will-change-transform"

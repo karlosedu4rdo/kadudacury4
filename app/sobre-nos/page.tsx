@@ -179,7 +179,7 @@ export default function SobreNosPage() {
       </section>
 
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton context="about" />
     </main>
   )
 }

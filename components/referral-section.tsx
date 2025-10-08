@@ -6,6 +6,7 @@ import { useState } from "react"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { whatsappMessages } from "@/lib/whatsapp"
 
 export function ReferralSection() {
   const [formData, setFormData] = useState({
@@ -16,8 +17,8 @@ export function ReferralSection() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Redireciona para WhatsApp
-    window.open("https://wa.me/5511921773843?text=Olá! Gostaria de me cadastrar no programa de indicação.", "_blank")
+    // Redireciona para WhatsApp com dados do formulário
+    window.open(whatsappMessages.referralProgram(formData), "_blank")
   }
 
   return (
@@ -35,7 +36,7 @@ export function ReferralSection() {
               isso.
             </p>
             <Button asChild className="bg-green-600 hover:bg-green-700 text-white font-semibold px-6 md:px-8 transition-all duration-300 hover:scale-105">
-              <Link href="https://wa.me/5511921773843" target="_blank" rel="noopener noreferrer">
+              <Link href={whatsappMessages.referralPage()} target="_blank" rel="noopener noreferrer">
                 Simular agora
               </Link>
             </Button>

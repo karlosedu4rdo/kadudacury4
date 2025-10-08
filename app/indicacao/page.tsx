@@ -102,7 +102,7 @@ export default function IndicacaoPage() {
       <ReferralSection />
 
       <Footer />
-      <WhatsAppButton />
+      <WhatsAppButton context="referral" />
     </main>
   )
 }
