@@ -56,7 +56,8 @@ export const LocationSection = memo(function LocationSection() {
             <Link
               key={location.id}
               href={`/imoveis?regiao=${location.slug}`}
-              className={`relative group cursor-pointer overflow-hidden rounded-lg aspect-[3/4] hover:scale-105 transition-all duration-300`}
+              className={`relative group cursor-pointer overflow-hidden rounded-lg aspect-[3/4] card-hover gpu-accelerated animate-fade-in-up`}
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <Image
                 src={location.image || "/placeholder.svg"}

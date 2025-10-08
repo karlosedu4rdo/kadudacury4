@@ -36,7 +36,7 @@ export function WhatsAppButton({ context = "general" }: WhatsAppButtonProps) {
       href={getMessageUrl()}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg transition-colors duration-200 will-change-transform"
+      className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white rounded-full p-4 shadow-lg btn-hover-lift btn-hover-scale gpu-accelerated animate-bounce-subtle"
       aria-label="Contato via WhatsApp"
     >
       <svg width="32" height="32" viewBox="0 0 32 32" fill="currentColor">

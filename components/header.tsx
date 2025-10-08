@@ -18,33 +18,33 @@ export function Header() {
   }, [])
 
   return (
-    <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-50 animate-fade-in">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 btn-hover-scale gpu-accelerated">
             <div className="flex items-center">
               <svg width="28" height="28" viewBox="0 0 32 32" fill="none" className="text-blue-600 md:w-8 md:h-8">
                 <path d="M16 4L4 12V28H12V20H20V28H28V12L16 4Z" fill="currentColor" />
               </svg>
               <div className="ml-2">
                 <div className="text-blue-600 font-bold text-lg md:text-xl leading-none mb-0.5">kakodacury</div>
-                <div className="text-[9px] md:text-[10px] text-gray-600 leading-tight">CONSTRUTORA E INCORPORADORA</div>
+                <div className="text-[9px] md:text-[10px] text-gray-600 leading-tight">CORRETOR DE IMÓVEIS</div>
               </div>
             </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6 text-sm font-medium absolute left-1/2 transform -translate-x-1/2">
-            <Link href="/imoveis" className="hover:text-blue-600 transition-colors duration-150" prefetch={false}>
+            <Link href="/imoveis" className="hover:text-blue-600 transition-colors duration-150 btn-hover-scale gpu-accelerated" prefetch={false}>
               Imóveis
             </Link>
-            <Link href="/sobre-nos" className="hover:text-blue-600 transition-colors duration-150" prefetch={false}>
+            <Link href="/sobre-nos" className="hover:text-blue-600 transition-colors duration-150 btn-hover-scale gpu-accelerated" prefetch={false}>
               Sobre Nós
             </Link>
-            <Link href="/indicacao" className="hover:text-blue-600 transition-colors duration-150" prefetch={false}>
+            <Link href="/indicacao" className="hover:text-blue-600 transition-colors duration-150 btn-hover-scale gpu-accelerated" prefetch={false}>
               Indicação
             </Link>
-            <Link href="/contato" className="hover:text-blue-600 transition-colors duration-150" prefetch={false}>
+            <Link href="/contato" className="hover:text-blue-600 transition-colors duration-150 btn-hover-scale gpu-accelerated" prefetch={false}>
               Contato
             </Link>
           </nav>

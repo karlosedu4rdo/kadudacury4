@@ -14,7 +14,7 @@ export function Footer() {
               </svg>
               <div className="ml-2">
                 <div className="text-blue-600 font-bold text-xl leading-none mb-1">kakodacury</div>
-                <div className="text-[10px] text-gray-600 leading-tight">CONSTRUTORA E INCORPORADORA</div>
+                <div className="text-[10px] text-gray-600 leading-tight">CORRETOR DE IMÓVEIS</div>
               </div>
             </div>
             <p className="text-sm text-gray-600 italic mb-4">você esperto</p>
@@ -111,7 +111,7 @@ export function Footer() {
                   <p className="text-xs">Central de Atendimento ao Cliente</p>
                 </div>
               </div>
-              <p className="text-lg md:text-xl font-bold">(11) 5061-0022</p>
+              <p className="text-lg md:text-xl font-bold">(11) 92177-3843</p>
             </div>
           </div>
         </div>
@@ -119,7 +119,7 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-200 mt-6 md:mt-8 pt-6 md:pt-8 text-center text-xs md:text-sm text-gray-600">
           <p className="leading-relaxed">
-            Copyright © 2025 Construtora Kakodacury - Todos os Direitos Reservados | Política de Privacidade | Condomínio
+            Copyright © 2025 Kakodacury Corretor de Imóveis - Todos os Direitos Reservados | Política de Privacidade | Condomínio
             Edifício Itália - Av. Ipiranga 344 - 4º Andar
           </p>
         </div>

@@ -15,7 +15,7 @@ import { useProperties, type Property } from "@/hooks/use-properties"
 
 function ImoveisContent() {
   const searchParams = useSearchParams()
-  const regionParam = searchParams.get("regiao")
+  const regionParam = searchParams?.get("regiao") || null
   const { properties, loading } = useProperties()
   const [selectedRegion, setSelectedRegion] = useState<string>(regionParam || "all")
   const [searchTerm, setSearchTerm] = useState("")

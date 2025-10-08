@@ -31,7 +31,7 @@ export default function ContatoPage() {
               </div>
               <h3 className="font-bold text-lg mb-2">Telefone</h3>
               <p className="text-gray-600">(11) 92177-3843</p>
-              <p className="text-gray-600">(11) 5061-0022</p>
+              <p className="text-gray-600">(11) 92177-3843</p>
             </div>
 
             <div className="text-center">

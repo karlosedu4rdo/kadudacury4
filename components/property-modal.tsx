@@ -97,8 +97,8 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
                   name: property.name,
                   location: property.location,
                   price: property.price,
-                  bedrooms: property.bedrooms,
-                  bathrooms: property.bathrooms,
+                  bedrooms: property.bedrooms?.toString() || '0',
+                  bathrooms: property.bathrooms?.toString() || '0',
                   area: property.area
                 })} 
                 target="_blank" 
@@ -114,8 +114,8 @@ export function PropertyModal({ property, onClose }: PropertyModalProps) {
                   name: property.name,
                   location: property.location,
                   price: property.price,
-                  bedrooms: property.bedrooms,
-                  bathrooms: property.bathrooms,
+                  bedrooms: property.bedrooms?.toString() || '0',
+                  bathrooms: property.bathrooms?.toString() || '0',
                   area: property.area
                 })} 
                 target="_blank" 

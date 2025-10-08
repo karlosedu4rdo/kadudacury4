@@ -5,8 +5,7 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, MapPin } from "lucide-react"
-import { PropertyModal } from "@/components/property-modal"
+import { ArrowRight, MapPin, X, Bed, Bath, Maximize } from "lucide-react"
 import { useProperties } from "@/hooks/use-properties"
 
 const apartments = [
@@ -129,7 +128,7 @@ const apartments = [
 
 export function ApartmentsSection() {
   const { properties, loading } = useProperties()
-  const [selectedProperty, setSelectedProperty] = useState<(typeof properties)[0] | null>(null)
+  const [selectedProperty, setSelectedProperty] = useState<typeof apartments[0] | null>(null)
   const [displayApartments, setDisplayApartments] = useState(apartments)
 
   useEffect(() => {
@@ -137,10 +136,41 @@ export function ApartmentsSection() {
       // Pega os imóveis marcados como destaque (máximo 5)
       const featured = properties.filter(p => p.featured)
       if (featured.length > 0) {
-        setDisplayApartments(featured)
+        // Map properties to apartment format
+        const mappedFeatured = featured.map(prop => ({
+          id: prop.id,
+          name: prop.name,
+          location: prop.location,
+          status: prop.status || 'Disponível',
+          statusColor: prop.status === 'Em Construção' ? 'bg-orange-600' : 'bg-green-600',
+          image: prop.image || '/placeholder.svg',
+          badge: 'Minha Casa Minha Vida',
+          price: prop.price || 'R$ 0',
+          bedrooms: prop.bedrooms || 2,
+          bathrooms: prop.bathrooms || 1,
+          area: prop.area || '34m²',
+          description: prop.description || 'Apartamento moderno e confortável.',
+          features: prop.features || []
+        }))
+        setDisplayApartments(mappedFeatured)
       } else {
         // Se não houver imóveis em destaque, pega os primeiros 5
-        setDisplayApartments(properties.slice(0, 5))
+        const mappedProperties = properties.slice(0, 5).map(prop => ({
+          id: prop.id,
+          name: prop.name,
+          location: prop.location,
+          status: prop.status || 'Disponível',
+          statusColor: prop.status === 'Em Construção' ? 'bg-orange-600' : 'bg-green-600',
+          image: prop.image || '/placeholder.svg',
+          badge: 'Minha Casa Minha Vida',
+          price: prop.price || 'R$ 0',
+          bedrooms: prop.bedrooms || 2,
+          bathrooms: prop.bathrooms || 1,
+          area: prop.area || '34m²',
+          description: prop.description || 'Apartamento moderno e confortável.',
+          features: prop.features || []
+        }))
+        setDisplayApartments(mappedProperties)
       }
     }
   }, [properties, loading])
@@ -170,7 +200,7 @@ export function ApartmentsSection() {
             <Link href="/imoveis">
               <Button
                 variant="outline"
-                className="border-blue-600 text-blue-600 hover:bg-blue-50 bg-transparent transition-all duration-300 hover:scale-105"
+                className="border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white bg-transparent btn-hover-lift btn-hover-scale gpu-accelerated transition-all duration-300"
               >
                 Ver Todos
                 <ArrowRight className="ml-2 w-4 h-4" />
@@ -182,7 +212,8 @@ export function ApartmentsSection() {
             {displayApartments.map((apt, index) => (
               <div
                 key={apt.id}
-                className={`group cursor-pointer transition-transform duration-300 hover:scale-105`}
+                className={`group cursor-pointer card-hover gpu-accelerated animate-fade-in-up`}
+                style={{ animationDelay: `${index * 0.1}s` }}
                 onClick={() => setSelectedProperty(apt)}
               >
                 <div className="relative overflow-hidden rounded-lg shadow-lg h-80">
@@ -217,7 +248,79 @@ export function ApartmentsSection() {
         </div>
       </section>
 
-      {selectedProperty && <PropertyModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
+      {selectedProperty && <ApartmentModal property={selectedProperty} onClose={() => setSelectedProperty(null)} />}
     </>
+  )
+}
+
+// Simple modal component for apartments
+function ApartmentModal({ property, onClose }: { property: typeof apartments[0], onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 animate-fade-in">
+      <div className="bg-white rounded-lg max-w-md w-full max-h-[90vh] overflow-y-auto shadow-2xl">
+        {/* Close Button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 z-10 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {/* Property Image */}
+        <div className="relative h-64">
+          <Image 
+            src={property.image || "/placeholder.svg"} 
+            alt={property.name} 
+            fill
+            className="object-cover rounded-t-lg"
+          />
+        </div>
+
+        {/* Property Details */}
+        <div className="p-6">
+          <h3 className="text-2xl font-bold mb-2">{property.name}</h3>
+          <p className="text-gray-600 mb-4">{property.location}</p>
+          
+          <div className="flex items-center gap-4 mb-4">
+            <div className="flex items-center gap-1">
+              <Bed className="w-4 h-4 text-gray-500" />
+              <span className="text-sm">{property.bedrooms} quartos</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Bath className="w-4 h-4 text-gray-500" />
+              <span className="text-sm">{property.bathrooms} banheiros</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Maximize className="w-4 h-4 text-gray-500" />
+              <span className="text-sm">{property.area}</span>
+            </div>
+          </div>
+
+          <p className="text-gray-700 mb-4">{property.description}</p>
+
+          <div className="mb-4">
+            <h4 className="font-semibold mb-2">Características:</h4>
+            <ul className="grid grid-cols-2 gap-1 text-sm text-gray-600">
+              {property.features.map((feature, index) => (
+                <li key={index} className="flex items-center gap-1">
+                  <span className="w-1 h-1 bg-blue-500 rounded-full"></span>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="flex justify-between items-center">
+            <div>
+              <p className="text-2xl font-bold text-blue-600">{property.price}</p>
+              <p className="text-sm text-gray-500">{property.status}</p>
+            </div>
+            <Button className="bg-blue-600 hover:bg-blue-700">
+              Saiba Mais
+            </Button>
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

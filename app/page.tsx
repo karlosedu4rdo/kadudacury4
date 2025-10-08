@@ -1,5 +1,6 @@
 import { Header } from "@/components/header"
 import { HeroCarousel } from "@/components/hero-carousel"
+import { SimulationSection } from "@/components/simulation-section"
 import { ApartmentsSection } from "@/components/apartments-section"
 import { LoadingSkeleton } from "@/components/loading-skeleton"
 import { Suspense } from "react"
@@ -19,15 +20,16 @@ export default function Home() {
     <main className="min-h-screen">
       <Header />
       <HeroCarousel />
-      <ApartmentsSection />
+      <SimulationSection />
       <Suspense fallback={<LoadingSkeleton />}>
         <LocationSection />
       </Suspense>
-      <Suspense fallback={<LoadingSkeleton />}>
-        <ReferralSection />
-      </Suspense>
+      <ApartmentsSection />
       <Suspense fallback={<LoadingSkeleton />}>
         <RequirementsSection />
+      </Suspense>
+      <Suspense fallback={<LoadingSkeleton />}>
+        <ReferralSection />
       </Suspense>
       <Suspense fallback={<LoadingSkeleton />}>
         <TestimonialsSection />
